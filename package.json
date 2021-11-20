@@ -1,0 +1,36 @@
+{
+  "name": "vicops-api",
+  "version": "1.0.3",
+  "description": "Api wrapper for VICOPS(virtual countries payment system) ",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vicops",
+    "api",
+    "vicops-api",
+    "payment-system",
+    "payment",
+    "system",
+    "virtual-countries",
+    "virtual",
+    "countries"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artegoser/vicops-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artegoser/vicops-api/issues"
+  },
+  "homepage": "https://github.com/artegoser/vicops-api#readme",
+  "author": "artegoser",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.9"
+  }
+}
