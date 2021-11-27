@@ -76,6 +76,23 @@ export class vicopsApi{
         })
     }
     /**
+     * Swap your currency on VICOPS stock market
+     * @param {string} name name of quote example: SKL/REA
+     * @param {string} from the name of the currency to be exchanged example: SKL
+     * @param {string} to the name of the currency that you will receive during the exchange example: REA
+     * @param {number} amount amount of currency "from" to be exchanged example: 5
+     * @returns response in json format
+     */
+     async swap(name, from, to, amount){
+        return await this._getPost("/api/swap", {
+            name:this.name,
+            password:this.password,
+            swap:{
+                name, from, to, amount
+            }
+        })
+    }
+    /**
      * get Course of currency, etc
      * @param {string} name name of quote
      * @returns response in json format
