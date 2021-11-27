@@ -19,12 +19,17 @@ export class vicopsApi{
      * Function to fetch vicops api
      * @returns response in json format
      */
-    private async _get(url:string, body:object, method:string="POST"){
+    private async _getPost(url:string, body:object){
         let res = await fetch(`${this.host}${url}`, {
-            method: method,
+            method: "POST",
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' },
         });
+        if(res.status!==200) throw await res.json();
+        return await res.json();
+    }
+    private async _getGet(url:string){
+        let res = await fetch(`${this.host}${url}`);
         if(res.status!==200) throw await res.json();
         return await res.json();
     }
@@ -34,7 +39,7 @@ export class vicopsApi{
      * @returns response in json format
      */
      async register(mail){
-        return await this._get("/api/register", {name:this.name, password:this.password, mail})
+        return await this._getPost("/api/register", {name:this.name, password:this.password, mail})
     }
     /**
      * Transaction in vicops
@@ -46,7 +51,7 @@ export class vicopsApi{
      * @returns response in json format
      */
      async transaction(recipient:string, amount:number, currency:string, comment?:string, type:string="transaction"){
-        return await this._get("/api/transaction", {
+        return await this._getPost("/api/transaction", {
             password:this.password,
             transaction:{
                 body:{
@@ -61,13 +66,21 @@ export class vicopsApi{
         })
     }
     /**
-     * 
+     * Get your user
      * @returns response in json format
      */
     async getUser(){
-        return await this._get("/api/user", {
+        return await this._getPost("/api/user", {
             name:this.name,
             password:this.password
         })
+    }
+    /**
+     * get Course of currency, etc
+     * @param {string} name name of quote
+     * @returns response in json format
+     */
+    async getCourse(name){
+        return await this._getGet(`/api/course/${name}`)
     }
 }
