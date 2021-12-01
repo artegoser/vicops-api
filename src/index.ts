@@ -25,12 +25,18 @@ export class vicopsApi{
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' },
         });
-        if(res.status!==200) throw await res.json();
+        if(res.status!==200) return {
+            status:res.status,
+            code:"denied"
+        };
         return await res.json();
     }
     private async _getGet(url:string){
         let res = await fetch(`${this.host}${url}`);
-        if(res.status!==200) throw await res.json();
+        if(res.status!==200) return {
+            status:res.status,
+            code:"denied"
+        };
         return await res.json();
     }
     /**
