@@ -88,6 +88,67 @@ export class vicopsApi {
     });
   }
   /**
+   * Submit a bid for sale
+   * @param {string} toBuy what to exchange your bid for
+   * @param {number} toSell what are you selling
+   * @param {string} amount amount to sell
+   * @param {string} course sales course
+   * @returns response in json format
+   */
+  async sell(toBuy: string, toSell: string, amount: number, course: number) {
+    return await this._getPost("/api/sell", {
+      password: this.password,
+      bid: {
+        username: this.name,
+        toSell,
+        toBuy,
+        amount,
+        course,
+      },
+    });
+  }
+  /**
+   * Submit a bid for sale
+   * @param {string} toBuy what to exchange your bid for
+   * @param {number} toSell what are you selling
+   * @param {string} amount amount to sell
+   * @param {string} course bying course
+   * @returns response in json format
+   */
+  async buy(toBuy: string, toSell: string, amount: number, course: number) {
+    return await this._getPost("/api/buy", {
+      password: this.password,
+      bid: {
+        username: this.name,
+        toSell,
+        toBuy,
+        amount,
+        course,
+      },
+    });
+  }
+  /**
+   * Get course
+   * @returns response in json format
+   */
+  async getCourse(fname, sname) {
+    return await this._getGet(`/api/course/${fname}/${sname}`);
+  }
+  /**
+   * Get chart
+   * @returns response in json format
+   */
+  async getChart(fname, sname) {
+    return await this._getGet(`/api/chart/${fname}/${sname}`);
+  }
+  /**
+   * Get bids
+   * @returns response in json format
+   */
+  async getBids(fname, sname) {
+    return await this._getGet(`/api/bids/${fname}/${sname}`);
+  }
+  /**
    * Get your user
    * @returns response in json format
    */
