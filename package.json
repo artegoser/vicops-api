@@ -1,6 +1,6 @@
 {
   "name": "vicops-api",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Api wrapper for VICOPS(virtual countries payment system) ",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

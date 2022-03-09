@@ -149,6 +149,13 @@ export class vicopsApi {
     return await this._getGet(`/api/bids/${fname}/${sname}`);
   }
   /**
+   * Get all bids
+   * @returns response in json format
+   */
+  async getAllBids(fname, sname) {
+    return await this._getGet(`/api/bids`);
+  }
+  /**
    * Get your user
    * @returns response in json format
    */
